@@ -1,5 +1,7 @@
 # Toggle All Members
 
+![Screenshot of the UI](images/screenshot.jpg)
+
 A [SillyTavern](https://github.com/SillyTavern/SillyTavern) extension that adds **Enable All** and **Disable All** buttons to the group chat members panel. One click toggles automatic replies for every member in the current group.
 
 ## Installation
