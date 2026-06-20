@@ -1,0 +1,11 @@
+.toggleAllMembersButtons {
+  display: flex;
+  gap: 4px;
+  flex-direction: row;
+  justify-content: center;
+
+
+  .menu_button {
+    padding: 10px;
+  }
+}
