@@ -1,0 +1,12 @@
+{
+  "display_name": "Toggle All Members",
+  "loading_order": 1,
+  "requires": [],
+  "optional": [],
+  "js": "dist/index.js",
+  "css": "dist/index.css",
+  "author": "Jeff Sandberg",
+  "version": "0.1.0",
+  "homePage": "https://github.com/paradox460/ST-ToggleAllMembers",
+  "auto_update": true
+}
