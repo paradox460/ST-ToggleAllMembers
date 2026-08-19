@@ -21,11 +21,11 @@ data/<user>/extensions/third-party/ST-ToggleAllMembers
 1. Open a **group chat**.
 2. Open the group settings panel (click the group avatar/name).
 3. Expand the **Current Members** drawer.
-4. Two icon buttons appear at the top:
+4. Two icon buttons appear at the top, and a third in the character selection:
    - **Enable All** (speech bubble icon) — re-enables auto-replies for every member.
    - **Disable All** (muted speech bubble icon) — disables auto-replies for every member.
+   - **Show only Enabled** (Person with Checkbox, in member view control panel) – Hides all disabled members from group picker
 
-State persists across page refreshes — the extension writes directly to the group via the SillyTavern API.
 
 ## Development
 
