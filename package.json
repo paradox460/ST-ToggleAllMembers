@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint .",
     "build": "mise run build",
-    "build:min": "mise run build:min",
+    "build:min": "mise run build:min"
   },
   "devDependencies": {
     "@eslint/css": "^1.3.0",

@@ -47,18 +47,44 @@ async function toggleAll(disabled: boolean): Promise<void> {
 }
 
 
+function toggleEnabledOnly(control: Element): void {
+  const container = control.closest('#currentGroupMembers');
+  if (!container) return;
+
+  const showEnabledMembersOnly = container.classList.toggle('showEnabledMembersOnly');
+  control.classList.toggle('selected', showEnabledMembersOnly);
+  control.setAttribute('aria-pressed', String(showEnabledMembersOnly));
+}
+
 function init(): void {
   const range = document.createRange();
   const templateFragment = range.createContextualFragment(rawControlTemplate);
+  const toggleAllTemplate = templateFragment.querySelector<HTMLTemplateElement>('template[data-template="toggle-all"]');
+  const showEnabledOnlyTemplate = templateFragment.querySelector<HTMLTemplateElement>('template[data-template="show-enabled-only"]');
 
-  document.querySelectorAll("#currentGroupMembers").forEach((container: HTMLElement | Element) => {
-    if (!container) return;
-
+  document.querySelectorAll('#currentGroupMembers').forEach((container: HTMLElement | Element) => {
     const header = container.querySelector('#rm_group_members_header');
     if (!header) return;
 
-    const buttonBar = templateFragment.cloneNode(true) as HTMLElement;
-    container.insertBefore(buttonBar, header);
+    if (toggleAllTemplate) {
+      container.insertBefore(toggleAllTemplate.content.cloneNode(true), header);
+    }
+
+    const toolbar = header.nextElementSibling;
+    if (!showEnabledOnlyTemplate || !toolbar?.matches('.rm_tag_controls')) return;
+
+    const filter = toolbar.querySelector('.rm_tag_filter');
+    if (!filter) return;
+
+    const insertEnabledOnlyControl = (): void => {
+      const clearFilters = filter.querySelector('.clearAllFilters');
+      if (clearFilters && !filter.querySelector('[data-action=showEnabledOnly]')) {
+        clearFilters.after(showEnabledOnlyTemplate.content.cloneNode(true));
+      }
+    };
+
+    insertEnabledOnlyControl();
+    new MutationObserver(insertEnabledOnlyControl).observe(filter, { childList: true });
   });
   document.addEventListener('click', (event) => {
     const target = event.target;
@@ -69,6 +95,9 @@ function init(): void {
     } else if (target.matches('.toggleAllMembersButtons [data-action=disableAll]')) {
       event.stopPropagation();
       toggleAll(true);
+    } else if (target.matches('[data-action=showEnabledOnly]')) {
+      event.stopPropagation();
+      toggleEnabledOnly(target);
     }
   });
 }

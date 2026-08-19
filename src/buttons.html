@@ -1,4 +1,9 @@
-<div class="toggleAllMembersButtons">
-  <div class="menu_button fa-solid fa-comment" data-action="enableAll" title="Enable auto-replies from all members"></div>
-  <div class="menu_button fa-solid fa-comment-slash" data-action="disableAll" title="Disable auto-replies from all members"></div>
-</div>
+<template data-template="toggle-all">
+  <div class="toggleAllMembersButtons">
+    <div class="menu_button fa-solid fa-comment" data-action="enableAll" title="Enable auto-replies from all members"></div>
+    <div class="menu_button fa-solid fa-comment-slash" data-action="disableAll" title="Disable auto-replies from all members"></div>
+  </div>
+</template>
+<template data-template="show-enabled-only">
+  <div class="tag actionable interactable showEnabledOnlyButton fa-solid fa-user-check" data-action="showEnabledOnly" title="Show enabled members only" aria-label="Show enabled members only" aria-pressed="false"></div>
+</template>

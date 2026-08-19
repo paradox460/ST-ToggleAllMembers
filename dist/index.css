@@ -9,3 +9,18 @@
 .toggleAllMembersButtons .menu_button {
   padding: 10px;
 }
+
+#currentGroupMembers.showEnabledMembersOnly .group_member.disabled {
+  display: none;
+}
+
+.rm_tag_controls > .showEnabledOnlyButton, .rm_tag_filter > .showEnabledOnlyButton {
+  cursor: pointer;
+  opacity: .6;
+  filter: brightness(.8);
+}
+
+.rm_tag_controls > .showEnabledOnlyButton:hover, .rm_tag_filter > .showEnabledOnlyButton:hover {
+  opacity: 1;
+  filter: brightness(1);
+}
